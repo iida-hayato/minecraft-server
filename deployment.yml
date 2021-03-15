@@ -47,10 +47,10 @@ spec:
             allowPrivilegeEscalation: false
           resources:
             requests:
-              cpu: 1.2
+              cpu: 1
               memory: 13Gi
             limits:
-              cpu: 1.93
+              cpu: 1
               memory: 13.94Gi            
       volumes:
         - name: minecraft-data
