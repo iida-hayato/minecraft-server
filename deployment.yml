@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata: 
+  name: minecraft
+  labels: 
+    app: minecraft
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: minecraft
+  template:
+    metadata: 
+      labels:
+        app: minecraft
+    spec:
+      containers:
+        - name: minecraft
+          image: itzg/minecraft-server:latest
+          env:
+            - name: EULA
+              value: TRUE
+            - name: TZ
+              value: Asia/Tokyo
+            - name: VERSION
+              value: 1.16.5
+          volumeMounts:
+            - name: minecraftData
+              mountPath: /data
+      volumes:
+        - name: minecraftData
+          persistentVolumeClaim: 
+            claimName: pvcName
+
+        
