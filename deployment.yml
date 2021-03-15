@@ -25,7 +25,7 @@ spec:
             - name: VERSION
               value: "1.16.5"
           volumeMounts:
-            - name: minecraftData
+            - name: minecraft-data
               mountPath: /data
           ports:
             - name: tcp
@@ -53,6 +53,6 @@ spec:
               cpu: 1.93
               memory: 13.94Gi            
       volumes:
-        - name: minecraftData
+        - name: minecraft-data
           persistentVolumeClaim: 
             claimName: pvc-name
