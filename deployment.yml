@@ -19,7 +19,7 @@ spec:
           image: itzg/minecraft-server:latest
           env:
             - name: EULA
-              value: TRUE
+              value: "true"
             - name: TZ
               value: Asia/Tokyo
             - name: VERSION
