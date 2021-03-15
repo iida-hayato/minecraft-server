@@ -23,7 +23,7 @@ spec:
             - name: TZ
               value: Asia/Tokyo
             - name: VERSION
-              value: 1.16.5
+              value: "1.16.5"
           volumeMounts:
             - name: minecraftData
               mountPath: /data
