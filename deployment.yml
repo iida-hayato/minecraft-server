@@ -55,4 +55,4 @@ spec:
       volumes:
         - name: minecraftData
           persistentVolumeClaim: 
-            claimName: pvc_name
+            claimName: pvc-name
