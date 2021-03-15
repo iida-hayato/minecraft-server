@@ -31,18 +31,6 @@ spec:
             - name: tcp
               containerPort: 25565
               protocol: TCP
-          readinessProbe:
-            tcpSocket:
-              port: 25565
-            initialDelaySeconds: 10
-            periodSeconds: 60
-            timeoutSeconds: 30
-          livenessProbe:
-            tcpSocket:
-              port: 25565
-            initialDelaySeconds: 60
-            periodSeconds: 60
-            timeoutSeconds: 30
           securityContext:
             allowPrivilegeEscalation: false
           resources:
