@@ -49,11 +49,8 @@ spec:
             allowPrivilegeEscalation: false
           resources:
             requests:
-              cpu: 1
-              memory: 12Gi
-            limits:
-              cpu: 1
-              memory: 13.94Gi            
+              cpu: 3
+              memory: 2Gi           
       volumes:
         - name: minecraft-data
           persistentVolumeClaim: 
