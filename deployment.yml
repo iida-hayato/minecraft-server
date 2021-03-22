@@ -22,6 +22,8 @@ spec:
               value: "true"
             - name: TZ
               value: Asia/Tokyo
+            - name: DIFFICULTY
+              value: hard
             - name: VERSION
               value: "1.16.5"
           volumeMounts:
