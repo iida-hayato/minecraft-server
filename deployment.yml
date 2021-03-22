@@ -51,6 +51,9 @@ spec:
             requests:
               cpu: 3
               memory: 2Gi           
+            limits:
+              cpu: 3.9
+              memory: 2.9Gi   
       volumes:
         - name: minecraft-data
           persistentVolumeClaim: 
