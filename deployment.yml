@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: minecraft
-          image: itzg/minecraft-server
+          image: itzg/minecraft-server:java8
           env:
             - name: EULA
               value: "true"
@@ -26,6 +26,10 @@ spec:
               value: "hard"
             - name: VERSION
               value: "1.12.2"
+            - name: TYPE
+              value: FORGE
+            - name: FORGEVERSION
+              value: "14.23.5.2854"
           volumeMounts:
             - name: minecraft-data
               mountPath: /data
