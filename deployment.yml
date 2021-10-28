@@ -16,16 +16,16 @@ spec:
     spec:
       containers:
         - name: minecraft
-          image: itzg/minecraft-server:latest
+          image: itzg/minecraft-server
           env:
             - name: EULA
               value: "true"
             - name: TZ
               value: Asia/Tokyo
             - name: DIFFICULTY
-              value: hard
+              value: "hard"
             - name: VERSION
-              value: "1.16.5"
+              value: "1.12.2"
           volumeMounts:
             - name: minecraft-data
               mountPath: /data
@@ -47,13 +47,6 @@ spec:
             timeoutSeconds: 30
           securityContext:
             allowPrivilegeEscalation: false
-          resources:
-            requests:
-              cpu: 3
-              memory: 1Gi           
-            limits:
-              cpu: 3.9
-              memory: 2.9Gi   
       volumes:
         - name: minecraft-data
           persistentVolumeClaim: 

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: default
+spec:
+  containers:
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+    volumeMounts:
+      - name: minecraft-data
+        mountPath: /data
+  volumes:
+  - name: minecraft-data
+    persistentVolumeClaim: 
+      claimName: pvc-name
+  restartPolicy: Always
