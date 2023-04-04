@@ -1,12 +1,23 @@
 kind: Service
 apiVersion: v1
 metadata: 
-  name: minecraft-tcp
+  name: valheim-udp-port
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "valheim-service"
 spec: 
   ports:
-    - name: tcp
-      port: 25565
-      targetPort: 25565
+    - name: udp
+      port: 2456
+      protocol: UDP
+      targetPort: 2456
+    - name: udp2
+      port: 2457
+      protocol: UDP
+      targetPort: 2457
+    - name: udp3
+      port: 2458
+      protocol: UDP
+      targetPort: 245
   selector:
-    app: minecraft
+    app: valheim
   type: LoadBalancer

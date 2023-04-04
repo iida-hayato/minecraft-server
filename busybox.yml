@@ -12,10 +12,10 @@ spec:
     imagePullPolicy: IfNotPresent
     name: busybox
     volumeMounts:
-      - name: minecraft-data
+      - name: pvc
         mountPath: /data
   volumes:
-  - name: minecraft-data
+  - name: pvc
     persistentVolumeClaim: 
       claimName: pvc-name
   restartPolicy: Always

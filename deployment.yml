@@ -1,57 +1,52 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata: 
-  name: minecraft
+  name: valheim
   labels: 
-    app: minecraft
+    app: valheim
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      app: minecraft
+      app: valheim
   template:
     metadata: 
       labels:
-        app: minecraft
+        app: valheim
     spec:
       containers:
-        - name: minecraft
-          image: itzg/minecraft-server:java8
+        - name: valheim
+          image: gcr.io/myfactorioserver/valheim
           env:
-            - name: EULA
-              value: "true"
             - name: TZ
-              value: Asia/Tokyo
-            - name: DIFFICULTY
-              value: "hard"
-            - name: VERSION
-              value: "1.12.2"
-            - name: TYPE
-              value: FORGE
-            - name: FORGEVERSION
-              value: "14.23.5.2854"
+              value: "Asia/Tokyo"
+            - name: cap_add
+              value: sys_nice          
+            - name: SERVER_PASS
+              value: "speee"
+            - name: SERVER_PUBLIC
+              value: "false"
+            - name: BEPINEX
+              value: "true"
           volumeMounts:
-            - name: minecraft-data
-              mountPath: /data
+            - name: valheim-data
+              mountPath: /opt/valheim
+              subPath: valheim
+            - name: valheim-data
+              mountPath: /config
+              subPath: valheim-config
           ports:
-            - name: tcp
-              containerPort: 25565
+            - containerPort: 2456
+              protocol: UDP
+            - containerPort: 2457
+              protocol: UDP
+            - containerPort: 2458
+              protocol: UDP
+            - containerPort: 9001
               protocol: TCP
-          readinessProbe:
-            tcpSocket:
-              port: 25565
-            initialDelaySeconds: 10
-            periodSeconds: 60
-            timeoutSeconds: 30
-          livenessProbe:
-            tcpSocket:
-              port: 25565
-            initialDelaySeconds: 60
-            periodSeconds: 60
-            timeoutSeconds: 30
           securityContext:
             allowPrivilegeEscalation: false
       volumes:
-        - name: minecraft-data
+        - name: valheim-data
           persistentVolumeClaim: 
             claimName: pvc-name
